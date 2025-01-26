@@ -16,7 +16,7 @@ function App() {
   }
   return (
     <div
-      className=""
+      className="bg-primary"
       // style={{
       //   backgroundImage: "url(/texture-background.jpg)",
       //   backgroundSize: "cover",

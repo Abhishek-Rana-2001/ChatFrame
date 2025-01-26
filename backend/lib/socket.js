@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app)
 
 const io = new Server(server , {
-    cors: ["https://chat-frame.vercel.app/"]
+    cors: ["https://chat-frame.vercel.app"]
 })
 
 export function getReceiverSocketId(userId){

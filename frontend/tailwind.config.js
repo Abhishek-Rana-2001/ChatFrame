@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-       primary: "#133E87",
-        secondary: "#608BC1",
-        tertiary: "#CBDCEB",
-        interact: "#ecf0f1",
+       primary: "#F2EFE7",
+        secondary: "#48A6A7",
+        tertiary: "#9ACBD0",
+        interact: "#2973B2",
         },
     },
   },

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
+import { motion } from "framer-motion";
 
 const schema = z.object({
   email: z
@@ -58,8 +59,35 @@ const Login = () => {
       <Header />
 
       <div className="h-screen flex justify-center items-center text-tertiary">
-        <div className="basis-1/2"></div>
-        <div className="space-y-10 min-w-80 min-h-[500px] basis-1/2 content-center p-10 py-20 w-[500px] bg-primary rounded-2xl">
+        <div className="basis-1/2 flex gap-10">
+          <motion.img
+            initial={{ y: 0 }}
+            animate={{ y: 100 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeInOut",
+              repeat: "Infinity",
+              repeatType: "loop",
+            }}
+            src="leftPill.jpg"
+            className="max-w-[250px] rounded-full object-cover mb-10"
+            alt=""
+          />
+          <motion.img
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeInOut",
+              repeat: "Infinity",
+              repeatType: "loop",
+            }}
+            src="rightPill.jpg"
+            className="max-w-[250px] rounded-full object-cover mt-10"
+            alt=""
+          />
+        </div>
+        <div className="space-y-10 min-w-80 min-h-[500px] basis-1/2 content-center p-10 py-20 w-[500px] bg-interact rounded-2xl">
           <h1 className="md:text-5xl p-1 text-center font-semibold">Log In</h1>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
@@ -81,7 +109,9 @@ const Login = () => {
               />
               {errors.password && <p>{errors.password.message}</p>}
             </div>
-            <div className="flex justify-center"><Button type="submit">Log In</Button></div>
+            <div className="flex justify-center">
+              <Button type="submit">Log In</Button>
+            </div>
           </form>
 
           <div className="flex justify-end">
