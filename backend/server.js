@@ -8,7 +8,7 @@ import cors from "cors"
 import { app,server } from "./lib/socket.js";
 
 app.use(cors({
-  origin: "https://chat-frame.vercel.app",
+  origin:process.env.NODE_ENV === "development" ? "http://localhost:5173": "https://chat-frame.vercel.app",
   credentials:true
 }))
 dotenv.config();
