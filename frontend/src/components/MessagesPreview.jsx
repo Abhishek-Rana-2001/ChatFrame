@@ -5,7 +5,7 @@ import { useChatContext } from "../context/ChatContext";
 const MessagesPreview = () => {
   const { user } = useAuthContext();
 
-  const { messages, setMessages, selectedUser } = useChatContext();
+  const { messages } = useChatContext();
   const messageEndRef = useRef(null);
 
   useEffect(() => {
@@ -15,17 +15,23 @@ const MessagesPreview = () => {
   }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-auto p-4 space-y-6 overflow-x-hidden">
+    <div className="flex-1 overflow-y-auto p-4 space-y-2 overflow-x-hidden">
       {messages?.map((message, index) => {
         return (
           <div
             ref={messageEndRef}
             key={index}
-            className={`bg-neutral-200 p-1 relative rounded-md border max-w-[500px] w-max px-2 ${
-              message.senderId === user._id ? "ml-auto" : ""
+            className={`bg-interact text-white p-1 relative rounded-xl px-3 border max-w-[500px] w-max ${
+              message.senderId === user?._id ? "ml-auto" : ""
             }`}
           >
-            <div className={`absolute -bottom-3 ${  message.senderId === user._id ? "right-1" : "left-1" } w-0 h-0 border-l-[10px] border-l-transparent border-t-[15px] border-neutral-200 border-r-[10px] border-r-transparent `}></div>
+            <div
+              className={`absolute -bottom-[5px] ${
+                message.senderId === user?._id
+                  ? "-right-[8px] -rotate-45"
+                  : "-left-2 rotate-45"
+              } w-0 h-0 border-l-[10px] border-l-transparent border-t-[15px] border-interact border-r-[10px] border-r-transparent `}
+            ></div>
             <div className=" ">
               {message.text && (
                 <span className="text-wrap">{message.text}</span>
@@ -34,6 +40,16 @@ const MessagesPreview = () => {
                 <img className="size-32" src={message.image} alt="image" />
               )}
             </div>
+            <span
+              className={`text-[10px] block text-white w-max ${
+                message.senderId === user._id ? "ml-auto" : ""
+              }`}
+            >
+              {new Date(message.createdAt).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </span>
           </div>
         );
       })}

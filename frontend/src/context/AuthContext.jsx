@@ -33,7 +33,9 @@ export const AuthProvider = ({ children }) => {
       if (res.status === 200) {
         setUser(res.data);
       }
-    });
+    }).catch((error)=>{
+      console.log(error)
+    })
   };
 
   const login = async (email, password) => {

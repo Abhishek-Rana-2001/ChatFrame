@@ -8,10 +8,7 @@ const Header = () => {
   return (
     <div className='fixed top-0 p-4 left-0 w-full'>
         <Wrapper className={"flex justify-between items-center p-0 md:p-4 "}>
-            <div className='text-4xl text-primary'>ChatFrame</div>
-            <div>
-                <Button onClick={()=>navigate("/signup")} >SignUp</Button>
-            </div>
+            <div className='text-4xl text-[#5765C5] font-semibold'>ChatFrame</div>
         </Wrapper>
     </div>
   )

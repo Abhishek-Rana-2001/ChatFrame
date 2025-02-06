@@ -11,13 +11,15 @@ export const ChatProvider = ({ children }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [isUsersLoading, setIsUsersLoading] = useState(false);
   const [isMessagesLoading, setIsMessagesLoading] = useState(false);
-  const {socketInstance} = useAuthContext()
+  const {socketInstance} = useAuthContext();
+  const [filteredUsers , setFilteredUsers] = useState([]);
 
   const getUsers = async () => {
     setIsUsersLoading(true);
     try {
       const response = await axiosInstance.get("/message/users");
       setUsers(response.data);
+      setFilteredUsers(response.data)
     } catch (error) {
       toast.error(error.response.data.message);
     } finally {
@@ -53,7 +55,7 @@ export const ChatProvider = ({ children }) => {
 
     socketInstance?.on("newMessage", (message)=>{
 
-      if(message.senderId !== selectedUser._id) return;
+      if(message.senderId !== selectedUser?._id) return;
 
       setMessages(prev=>([...prev, message]))
     })
@@ -82,7 +84,8 @@ export const ChatProvider = ({ children }) => {
         setIsMessagesLoading,
         sendMessage,
         subscribeToMessages,
-        unsubscribeToMessages
+        unsubscribeToMessages,
+        filteredUsers , setFilteredUsers
       }}
     >
       {children}

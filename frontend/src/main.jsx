@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Login from "./pages/auth/Login.jsx";
 import SignUp from "./pages/auth/SignUp.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
+import { GlobalProvider } from "./context/GlobalContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,9 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <AuthProvider>
-    <RouterProvider router={router} />
-  </AuthProvider>
+  <GlobalProvider>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  </GlobalProvider>
 );

@@ -9,7 +9,7 @@ const ChatContainer = () => {
 
   useEffect(()=>{
        if(selectedUser){
-        getMessages(selectedUser._id)
+        getMessages(selectedUser?._id)
         subscribeToMessages()
        }
 
@@ -24,7 +24,7 @@ const ChatContainer = () => {
   }
 
   return (
-    <div className="flex-1 flex flex-col ">
+    <div className="flex-1 flex flex-col rounded-3xl bg-white overflow-hidden pb-2">
       {selectedUser ? <>
         <ChatHeader />
         <MessagesPreview />

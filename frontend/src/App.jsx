@@ -16,7 +16,7 @@ function App() {
   }
   return (
     <div
-      className="bg-primary"
+      className="bg-primary h-screen"
       // style={{
       //   backgroundImage: "url(/texture-background.jpg)",
       //   backgroundSize: "cover",
